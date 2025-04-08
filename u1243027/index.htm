@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <title>菜系網站</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Noto Serif TC', serif;
+      background-color: #000;
+    }
+
+    .container {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      background-image: url('菜系.png');
+      background-size: cover;
+      background-position: center;
+    }
+
+    .link {
+      position: absolute;
+      width: 100px;
+      height: 40px;
+      color: #fff6c0;
+      font-size: 33px;
+      font-weight: bold;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      pointer-events: auto;
+      background-color: rgba(255, 255, 255, 0); /* 透明但可點 */
+      transform: translate(-50%, -50%);
+    }
+  </style>
+
+  <!-- Google 字體 -->
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <!-- 左邊 -->
+    <a href="川菜.html" class="link" style="top: 9%; left: 15%;">川菜</a>
+    <a href="魯菜.html" class="link" style="top: 36%; left: 15%;">魯菜</a>
+    <a href="粵菜.html" class="link" style="top: 63%; left: 15%;">粵菜</a>
+    <a href="淮揚菜.html" class="link" style="top: 91%; left: 15%;">淮揚菜</a>
+
+    <!-- 右邊 -->
+    <a href="湘菜.html" class="link" style="top: 9%; left: 86%;">湘菜</a>
+    <a href="閩菜.html" class="link" style="top: 36%; left: 86%;">閩菜</a>
+    <a href="浙菜.html" class="link" style="top: 63%; left: 86%;">浙菜</a>
+    <a href="徽菜.html" class="link" style="top: 91%; left: 86%;">徽菜</a>
+  </div>
+</body>
+</html>
