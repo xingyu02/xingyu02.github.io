@@ -1,41 +1,161 @@
 <!doctype html>
 <html lang="zh-Hant">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>川菜介紹</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
-  </head>
-  <body>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>川菜介紹</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    /* 全站字體與背景 */
+    body {
+      background-color: #f9f9f9;
+      color: #111;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+    }
 
-    <!-- 導覽列 -->
-    <ul class="nav nav-tabs mb-4">
-      <li class="nav-item">
-        <a class="nav-link active" aria-current="page" href="#">川菜介紹</a>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">更多</a>
-        <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="#">麻辣火鍋</a></li>
-          <li><a class="dropdown-item" href="#">宮保雞丁</a></li>
-          <li><a class="dropdown-item" href="#">水煮牛肉</a></li>
-        </ul>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">其他連結</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link disabled" aria-disabled="true">無效</a>
-      </li>
-    </ul>
+    /* Navbar */
+    .navbar {
+      background-color: #ffffff;
+      border-bottom: 1px solid #e0e0e0;
+    }
+    .navbar-toggler-icon {
+      filter: invert(50%);
+    }
+    .navbar-nav .nav-link {
+      color: #333333;
+      font-weight: 500;
+    }
+    .navbar-nav .nav-link:hover {
+      color: #7caf2e;
+    }
+    .navbar-nav .nav-link.active {
+      color: #7caf2e;
+      font-weight: 600;
+    }
 
-    <!-- 內容區 -->
+    /* 標題卡片 */
+    .feature-card {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 1.5rem;
+      background-color: #ffffff;
+      border-left: 4px solid #7caf2e;
+      border-radius: 6px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+    .feature-card h1 {
+      margin-bottom: 0.5rem;
+      font-size: 2.5rem;
+      color: #222222;
+    }
+    .feature-card p {
+      font-size: 1.125rem;
+      line-height: 1.8;
+      color: #444444;
+      margin-top: 1rem;
+    }
+
+    /* 內容區塊 */
+    .content-card {
+      max-width: 900px;
+      margin: 1.5rem auto 3rem;
+      padding: 1.5rem;
+      background-color: #ffffff;
+      border-radius: 6px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+    .content-card h2 {
+      color: #7caf2e;
+      font-size: 1.75rem;
+      margin-top: 1.5rem;
+      padding-bottom: 0.3rem;
+      border-bottom: 2px solid #e0e0e0;
+    }
+    .content-card p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      margin-top: 0.8rem;
+      color: #333333;
+    }
+
+    /* 圖片響應式 */
+    .img-fluid {
+      display: block;
+      width: 100%;
+      height: auto;
+      margin: 1rem 0;
+      border-radius: 4px;
+    }
+
+    /* 下拉選單 */
+    .dropdown-menu {
+      min-width: 10rem;
+    }
+    .dropdown-item {
+      color: #333333;
+    }
+    .dropdown-item:hover {
+      background-color: #f0f0f0;
+      color: #7caf2e;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar（已移除 Logo）-->
+  <nav class="navbar navbar-expand-lg">
     <div class="container">
-      <h1>川菜（四川菜）</h1>
-      <p>川菜以麻辣著稱，重視調味，常使用辣椒、花椒、豆瓣醬等。</p>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link active" href="#">川菜介紹</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">菜餚介紹</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#hotpot">麻辣火鍋</a></li>
+              <li><a class="dropdown-item" href="#kungpao">宮保雞丁</a></li>
+              <li><a class="dropdown-item" href="#beef">水煮牛肉</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">其他連結</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="https://xingyu02.github.io/index.htm">回主頁</a>
+          </li>
+        </ul>
+      </div>
     </div>
+  </nav>
 
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
-  </body>
+  <!-- 標題 + 導讀 -->
+  <div class="feature-card">
+    <h1>川菜（四川菜）</h1>
+    <p>
+      川菜以麻辣著稱，重視調味，常使用辣椒、花椒、豆瓣醬等。<br>
+      口味多樣，包括麻、辣、香、鹹、酸等，深受各地食客喜愛。
+    </p>
+  </div>
+
+  <!-- 內容區 -->
+  <div class="content-card">
+    <!-- 圖片 -->
+    <img src="96bdcdc6-cef3-4be3-8532-77b907decca7.jpg" alt="麻辣火鍋" class="img-fluid">
+
+    <h2 id="hotpot">麻辣火鍋</h2>
+    <p>麻辣火鍋是川菜中的代表料理，以濃郁辛辣的湯底著稱。湯底使用牛油、花椒、乾辣椒、豆瓣醬等熬製，香氣四溢。配料多樣，如牛肉片、毛肚、鴨血、蔬菜等，沾醬自由搭配。</p>
+
+    <h2 id="kungpao">宮保雞丁</h2>
+    <p>宮保雞丁是經典川菜之一，由雞丁、花生、乾辣椒等食材製成，調味料包括醬油、糖、醋等。成品色香味俱全，外酥內嫩，酸甜中帶辣，是家常又具風味的佳餚。</p>
+
+    <h2 id="beef">水煮牛肉</h2>
+    <p>水煮牛肉以牛肉與蔬菜為主料，放入滾燙且加入大量辣椒、花椒的湯中煮熟，再淋上熱油激發香氣。口感麻辣鮮香，肉質滑嫩，是許多川菜愛好者的最愛。</p>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
+</body>
 </html>
