@@ -1,12 +1,311 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-  <meta charset="UTF-8">
-  <title>魯菜介紹</title>
+  <meta charset="UTF-8" />
+  <title>魯菜主要發源於</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Noto Serif TC", serif;
+      background-color: #121212;
+      color: #B0E0E6;
+      line-height: 1.8;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    header {
+      background-image: url('https://images.unsplash.com/photo-1604908554161-e4e7691802b3?auto=format&fit=crop&w=1470&q=80');
+      background-size: cover;
+      background-position: center;
+      color: #FFD700;
+      text-align: center;
+      padding: 100px 20px 80px;
+      position: relative;
+    }
+
+    header::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(18, 18, 18, 0.75);
+      z-index: 0;
+    }
+
+    header h1 {
+      font-size: 56px;
+      font-weight: 700;
+      position: relative;
+      z-index: 1;
+      margin: 0 0 16px;
+      letter-spacing: 3px;
+      color: #FFD700;
+      font-family: "Playfair Display", "Noto Serif TC", serif;
+    }
+
+    header p {
+      font-size: 20px;
+      position: relative;
+      z-index: 1;
+      max-width: 600px;
+      margin: 0 auto;
+      color: #B0E0E6;
+    }
+
+    .nav {
+      background-color: #1f1f1f;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 10px 0;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.6);
+    }
+
+    .nav ul {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav a {
+      text-decoration: none;
+      color: #FFD700;
+      font-weight: bold;
+      font-size: 18px;
+      transition: color 0.3s ease;
+    }
+
+    .nav a:hover {
+      color: #FFFACD;
+    }
+
+    .section {
+      max-width: 900px;
+      margin: 60px auto;
+      padding: 0 20px;
+    }
+
+    .section h2 {
+      color: #FFD700;
+      border-left: 6px solid #FFD700;
+      padding-left: 12px;
+      margin-bottom: 32px;
+      font-weight: 700;
+      font-size: 28px;
+      letter-spacing: 1.5px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: "Playfair Display", "Noto Serif TC", serif;
+    }
+
+    .section p {
+      font-size: 18px;
+      color: #B0E0E6;
+      max-width: 760px;
+      margin-bottom: 40px;
+    }
+
+    .map {
+      text-align: center;
+      margin-top: 30px;
+      margin-bottom: 50px;
+    }
+
+    .map img {
+      max-width: 100%;
+      border-radius: 16px;
+      transition: transform 0.3s ease;
+      cursor: zoom-in;
+      filter: brightness(0.85);
+    }
+
+    .map img:hover {
+      transform: scale(1.05);
+      filter: brightness(1);
+    }
+
+    .dish {
+      display: flex;
+      flex-wrap: wrap;
+      background: #1a1a1a;
+      border-radius: 20px;
+      overflow: hidden;
+      margin-bottom: 60px;
+      transition: transform 0.35s ease;
+      cursor: pointer;
+    }
+
+    .dish:hover {
+      transform: translateY(-6px);
+    }
+
+    .dish img {
+      width: 380px;
+      height: auto;
+      object-fit: cover;
+      flex-shrink: 0;
+      border-right: 8px solid #121212;
+      transition: filter 0.3s ease;
+      filter: brightness(0.9);
+    }
+
+    .dish:hover img {
+      filter: brightness(1);
+    }
+
+    .dish-content {
+      padding: 28px 36px;
+      flex: 1 1 400px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .dish-content h3 {
+      margin-top: 0;
+      color: #FFD700;
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 16px;
+      letter-spacing: 1.2px;
+      font-family: "Playfair Display", "Noto Serif TC", serif;
+    }
+
+    .dish-content p {
+      margin-bottom: 0;
+      font-size: 17px;
+      color: #B0E0E6;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 800px) {
+      .dish {
+        flex-direction: column;
+      }
+
+      .dish img {
+        width: 100%;
+        border-right: none;
+        border-bottom: 8px solid #121212;
+      }
+
+      .dish-content {
+        padding: 24px 20px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 36px;
+      }
+
+      header p {
+        font-size: 16px;
+      }
+
+      .section h2 {
+        font-size: 24px;
+      }
+
+      .section p {
+        font-size: 16px;
+      }
+
+      .dish-content h3 {
+        font-size: 26px;
+      }
+
+      .dish-content p {
+        font-size: 15px;
+      }
+    }
+  </style>
 </head>
 <body>
+
+<header>
   <h1>魯菜（山東菜）</h1>
-  <p>魯菜擅長湯類和海鮮，講究刀工與火候，是中華料理的重要基礎之一。</p>
-  <a href="index.html">⬅ 回首頁</a>
+  <p>一脈古風，味在齊魯。刀工精細，鹹鮮見長。</p>
+</header>
+
+<nav class="nav">
+  <ul>
+    <li><a href="#intro">魯菜介紹</a></li>
+    <li><a href="#geo">地理分布</a></li>
+    <li><a href="#dishes">代表菜色</a></li>
+  </ul>
+</nav>
+
+<div class="section" id="intro">
+  <h2>🍲 魯菜介紹</h2>
+  <p>
+    魯菜源於山東，是中國最早成型的菜系之一。注重<strong>刀工、火候</strong>與<strong>湯汁，以鮮、香、脆、嫩見長</strong>。味型偏<strong>鹹鮮</strong>，擅用高湯提味，講究「清而不淡、濃而不膩」。
+  </p>
+</div>
+
+<div class="section" id="geo">
+  <h2>📍 魯菜地理分布</h2>
+  <p>
+    魯菜主要發源於<strong>山東省</strong>，主要分為濟南、膠東、孔府三大流派。其影響力遍及北方地區，對官府菜和京津菜系影響深遠。因山東地處黃河下游，物產豐富，形成了以海鮮、肉類、湯品為主的飲食特色。
+  </p>
+</div>
+
+<div class="section" id="dishes">
+  <h2>🍛 代表菜色介紹</h2>
+
+  <div class="dish">
+    <img src="05.jpeg" alt="糖醋鯉魚" />
+    <div class="dish-content">
+      <h3>糖醋鯉魚</h3>
+      <p>
+        為魯菜代表性名菜之一，選用活鯉魚劃花刀後炸至金黃，再淋上酸甜適中的糖醋汁，色澤鮮亮、外酥裡嫩，魚肉細膩，香氣撲鼻。
+      </p>
+    </div>
+  </div>
+
+  <div class="dish">
+    <img src="06.jpg" alt="九轉大腸" />
+    <div class="dish-content">
+      <h3>九轉大腸</h3>
+      <p>
+        是山東傳統名菜之一，以肥腸為主料，經過多道工序製作，色澤紅亮、入口柔韌，口味酸、甜、鹹、辣、香俱全，層次豐富，是魯菜工藝的代表。
+      </p>
+    </div>
+  </div>
+
+  <div class="dish">
+    <img src="07.avif" alt="葱燒海參" />
+    <div class="dish-content">
+      <h3>葱燒海參</h3>
+      <p>
+        魯菜經典名菜，選用鮮嫩海參，搭配濃郁蔥香與鮮美高湯燉製而成。口感軟糯彈牙，湯汁醇厚，色澤紅亮，是宴席上的珍饈佳餚。
+      </p>
+    </div>
+  </div>
+
+  <div class="dish">
+    <img src="08.webp" alt="四喜丸子" />
+    <div class="dish-content">
+      <h3>四喜丸子</h3>
+      <p>
+        又稱「紅燒獅子頭」，代表吉祥圓滿。用豬絞肉製成大丸子，炸後紅燒，湯汁濃郁、味道鮮美，是山東婚宴與節慶常見的菜色。
+      </p>
+    </div>
+  </div>
+</div>
+
 </body>
 </html>

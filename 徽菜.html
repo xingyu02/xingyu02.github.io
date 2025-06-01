@@ -1,12 +1,310 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-  <meta charset="UTF-8">
-  <title>徽菜介紹</title>
+  <meta charset="UTF-8" />
+  <title>徽菜｜中國八大菜系</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Noto Serif TC", serif;
+      background-color: #121212;
+      color: #B0E0E6;
+      line-height: 1.8;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    header {
+      background-image: url('https://images.unsplash.com/photo-1604908554161-e4e7691802b3?auto=format&fit=crop&w=1470&q=80');
+      background-size: cover;
+      background-position: center;
+      color: #FFD700;
+      text-align: center;
+      padding: 100px 20px 80px;
+      position: relative;
+    }
+
+    header::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(18, 18, 18, 0.75);
+      z-index: 0;
+    }
+
+    header h1 {
+      font-size: 56px;
+      font-weight: 700;
+      position: relative;
+      z-index: 1;
+      margin: 0 0 16px;
+      letter-spacing: 3px;
+      color: #FFD700;
+      font-family: "Playfair Display", "Noto Serif TC", serif;
+    }
+
+    header p {
+      font-size: 20px;
+      position: relative;
+      z-index: 1;
+      max-width: 600px;
+      margin: 0 auto;
+      color: #B0E0E6;
+    }
+
+    .nav {
+      background-color: #1f1f1f;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 10px 0;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.6);
+    }
+
+    .nav ul {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav a {
+      text-decoration: none;
+      color: #FFD700;
+      font-weight: bold;
+      font-size: 18px;
+      transition: color 0.3s ease;
+    }
+
+    .nav a:hover {
+      color: #FFFACD;
+    }
+
+    .section {
+      max-width: 900px;
+      margin: 60px auto;
+      padding: 0 20px;
+    }
+
+    .section h2 {
+      color: #FFD700;
+      border-left: 6px solid #FFD700;
+      padding-left: 12px;
+      margin-bottom: 32px;
+      font-weight: 700;
+      font-size: 28px;
+      letter-spacing: 1.5px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: "Playfair Display", "Noto Serif TC", serif;
+    }
+
+    .section p {
+      font-size: 18px;
+      color: #B0E0E6;
+      max-width: 760px;
+      margin-bottom: 40px;
+    }
+
+    .map {
+      text-align: center;
+      margin-top: 30px;
+      margin-bottom: 50px;
+    }
+
+    .map img {
+      max-width: 100%;
+      border-radius: 16px;
+      transition: transform 0.3s ease;
+      cursor: zoom-in;
+      filter: brightness(0.85);
+    }
+
+    .map img:hover {
+      transform: scale(1.05);
+      filter: brightness(1);
+    }
+
+    .dish {
+      display: flex;
+      flex-wrap: wrap;
+      background: #1a1a1a;
+      border-radius: 20px;
+      overflow: hidden;
+      margin-bottom: 60px;
+      transition: transform 0.35s ease;
+      cursor: pointer;
+    }
+
+    .dish:hover {
+      transform: translateY(-6px);
+    }
+
+    .dish img {
+      width: 380px;
+      height: auto;
+      object-fit: cover;
+      flex-shrink: 0;
+      border-right: 8px solid #121212;
+      transition: filter 0.3s ease;
+      filter: brightness(0.9);
+    }
+
+    .dish:hover img {
+      filter: brightness(1);
+    }
+
+    .dish-content {
+      padding: 28px 36px;
+      flex: 1 1 400px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .dish-content h3 {
+      margin-top: 0;
+      color: #FFD700;
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 16px;
+      letter-spacing: 1.2px;
+      font-family: "Playfair Display", "Noto Serif TC", serif;
+    }
+
+    .dish-content p {
+      margin-bottom: 0;
+      font-size: 17px;
+      color: #B0E0E6;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 800px) {
+      .dish {
+        flex-direction: column;
+      }
+
+      .dish img {
+        width: 100%;
+        border-right: none;
+        border-bottom: 8px solid #121212;
+      }
+
+      .dish-content {
+        padding: 24px 20px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 36px;
+      }
+
+      header p {
+        font-size: 16px;
+      }
+
+      .section h2 {
+        font-size: 24px;
+      }
+
+      .section p {
+        font-size: 16px;
+      }
+
+      .dish-content h3 {
+        font-size: 26px;
+      }
+
+      .dish-content p {
+        font-size: 15px;
+      }
+    }
+  </style>
 </head>
 <body>
+
+<header>
   <h1>徽菜（安徽菜）</h1>
-  <p>徽菜善於燉煮，風味濃郁，注重原汁原味，常用山野食材。</p>
-  <a href="index.html">⬅ 回首頁</a>
-</body>
-</html>
+  <p>以燉、煨、蒸見長，重視原汁原味，善用山野珍味。</p>
+</header>
+
+<nav class="nav">
+  <ul>
+    <li><a href="#intro">徽菜介紹</a></li>
+    <li><a href="#geo">地理分布</a></li>
+    <li><a href="#dishes">代表菜色</a></li>
+  </ul>
+</nav>
+
+<div class="section" id="intro">
+  <h2>🍲 徽菜介紹</h2>
+  <p>
+    徽菜以燉、煨、蒸等慢工細活見長，講究原汁原味，擅長運用山野珍味與地方食材。味道醇厚濃郁，風味淳樸，並融合了徽州獨特的飲食文化。徽菜注重火候，常以慢火細燉突出食材本身鮮香，是中國八大菜系中最具地方風情的菜系之一。
+  </p>
+</div>
+
+<div class="section" id="geo">
+  <h2>📍 徽菜地理分布</h2>
+  <p>
+    徽菜起源於安徽省，主要分布於徽州、沿江、沿淮三大區域。安徽多山，食材多樣且豐富，徽菜吸收了豐富的山珍野味與江淮水域的鮮活食材，形成獨特的地方風味。
+  </p>
+  <div class="map">
+  </div>
+</div>
+
+<div class="section" id="dishes">
+  <h2>🍛 代表菜色介紹</h2>
+
+  <div class="dish">
+    <img src="徽1.jpeg" alt="毛豆腐" />
+    <div class="dish-content">
+      <h3>毛豆腐</h3>
+      <p>
+        毛豆腐是徽州傳統發酵豆腐，外表長滿白色絨毛，煎至外酥內嫩，風味獨特帶有自然發酵的香氣，是徽菜中別具一格的特色美食。
+      </p>
+    </div>
+  </div>
+
+  <div class="dish">
+    <img src="徽2.jpg" alt="臭鱖魚" />
+    <div class="dish-content">
+      <h3>臭鱖魚</h3>
+      <p>
+        臭鱖魚利用特有的腌制發酵方法，魚肉香氣濃烈帶有獨特臭味，經煎煮後入口鮮美，是徽菜中極具地方特色的名菜。
+      </p>
+    </div>
+  </div>
+
+  <div class="dish">
+    <img src="徽3.jpg" alt="符離集燒雞" />
+    <div class="dish-content">
+      <h3>符離集燒雞</h3>
+      <p>
+        符離集燒雞以特殊醃料醃制後慢火烤製，外皮酥脆，肉質鮮嫩多汁，香味四溢，是安徽徽州地區的招牌名菜。
+      </p>
+    </div>
+  </div>
+
+  <div class="dish">
+    <img src="徽4.webp" alt="火腿燉甲魚" />
+    <div class="dish-content">
+      <h3>火腿燉甲魚</h3>
+      <p>
+        以徽州火腿與甲魚同燉，湯汁鮮美濃郁，肉質鮮嫩，膠質豐富，是一道滋補佳餚，代表徽菜的精湛燉煮技藝。
+      </p>
+    </div>
+  </div>
+</div>

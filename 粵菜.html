@@ -1,12 +1,311 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-  <meta charset="UTF-8">
-  <title>粵菜介紹</title>
+  <meta charset="UTF-8" />
+  <title>粵菜｜中國八大菜系</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Noto Serif TC", serif;
+      background-color: #121212;
+      color: #B0E0E6;
+      line-height: 1.8;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    header {
+      background-image: url('https://images.unsplash.com/photo-1604908554161-e4e7691802b3?auto=format&fit=crop&w=1470&q=80');
+      background-size: cover;
+      background-position: center;
+      color: #FFD700;
+      text-align: center;
+      padding: 100px 20px 80px;
+      position: relative;
+    }
+
+    header::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(18, 18, 18, 0.75);
+      z-index: 0;
+    }
+
+    header h1 {
+      font-size: 56px;
+      font-weight: 700;
+      position: relative;
+      z-index: 1;
+      margin: 0 0 16px;
+      letter-spacing: 3px;
+      color: #FFD700;
+      font-family: "Playfair Display", "Noto Serif TC", serif;
+    }
+
+    header p {
+      font-size: 20px;
+      position: relative;
+      z-index: 1;
+      max-width: 600px;
+      margin: 0 auto;
+      color: #B0E0E6;
+    }
+
+    .nav {
+      background-color: #1f1f1f;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 10px 0;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.6);
+    }
+
+    .nav ul {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav a {
+      text-decoration: none;
+      color: #FFD700;
+      font-weight: bold;
+      font-size: 18px;
+      transition: color 0.3s ease;
+    }
+
+    .nav a:hover {
+      color: #FFFACD;
+    }
+
+    .section {
+      max-width: 900px;
+      margin: 60px auto;
+      padding: 0 20px;
+    }
+
+    .section h2 {
+      color: #FFD700;
+      border-left: 6px solid #FFD700;
+      padding-left: 12px;
+      margin-bottom: 32px;
+      font-weight: 700;
+      font-size: 28px;
+      letter-spacing: 1.5px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: "Playfair Display", "Noto Serif TC", serif;
+    }
+
+    .section p {
+      font-size: 18px;
+      color: #B0E0E6;
+      max-width: 760px;
+      margin-bottom: 40px;
+    }
+
+    .map {
+      text-align: center;
+      margin-top: 30px;
+      margin-bottom: 50px;
+    }
+
+    .map img {
+      max-width: 100%;
+      border-radius: 16px;
+      transition: transform 0.3s ease;
+      cursor: zoom-in;
+      filter: brightness(0.85);
+    }
+
+    .map img:hover {
+      transform: scale(1.05);
+      filter: brightness(1);
+    }
+
+    .dish {
+      display: flex;
+      flex-wrap: wrap;
+      background: #1a1a1a;
+      border-radius: 20px;
+      overflow: hidden;
+      margin-bottom: 60px;
+      transition: transform 0.35s ease;
+      cursor: pointer;
+    }
+
+    .dish:hover {
+      transform: translateY(-6px);
+    }
+
+    .dish img {
+      width: 380px;
+      height: auto;
+      object-fit: cover;
+      flex-shrink: 0;
+      border-right: 8px solid #121212;
+      transition: filter 0.3s ease;
+      filter: brightness(0.9);
+    }
+
+    .dish:hover img {
+      filter: brightness(1);
+    }
+
+    .dish-content {
+      padding: 28px 36px;
+      flex: 1 1 400px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .dish-content h3 {
+      margin-top: 0;
+      color: #FFD700;
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 16px;
+      letter-spacing: 1.2px;
+      font-family: "Playfair Display", "Noto Serif TC", serif;
+    }
+
+    .dish-content p {
+      margin-bottom: 0;
+      font-size: 17px;
+      color: #B0E0E6;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 800px) {
+      .dish {
+        flex-direction: column;
+      }
+
+      .dish img {
+        width: 100%;
+        border-right: none;
+        border-bottom: 8px solid #121212;
+      }
+
+      .dish-content {
+        padding: 24px 20px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 36px;
+      }
+
+      header p {
+        font-size: 16px;
+      }
+
+      .section h2 {
+        font-size: 24px;
+      }
+
+      .section p {
+        font-size: 16px;
+      }
+
+      .dish-content h3 {
+        font-size: 26px;
+      }
+
+      .dish-content p {
+        font-size: 15px;
+      }
+    }
+  </style>
 </head>
 <body>
+
+<header>
   <h1>粵菜（廣東菜）</h1>
-  <p>粵菜口味清淡鮮香，擅長燒臘、煲湯，講究食材本味。</p>
-  <a href="index.html">⬅ 回首頁</a>
-</body>
-</html>
+  <p>清淡鮮美，講究火候，是最具國際化的中國菜系。</p>
+</header>
+
+<nav class="nav">
+  <ul>
+    <li><a href="#intro">粵菜介紹</a></li>
+    <li><a href="#geo">地理分布</a></li>
+    <li><a href="#dishes">代表菜色</a></li>
+  </ul>
+
+</nav>
+<div class="section" id="intro">
+  <h2>🍲 粵菜介紹</h2>
+  <p>
+    粵菜是中國八大菜系之一，強調保持食材原味，講究清淡鮮美和火候的掌控，擅長燉、蒸、炒等多種烹調技法。廣東菜注重色香味俱全，講究刀工與擺盤，是中國餐飲文化的重要代表。粵菜口味多變，既有清淡鮮甜，也有醬香濃郁，深受海內外食客喜愛。
+  </p>
+</div>
+
+<div class="section" id="geo">
+  <h2>📍 粵菜地理分布</h2>
+  <p>
+    粵菜起源於廣東省，主要城市包括廣州、深圳、佛山以及潮州、客家地區。由於廣東靠近南海，海鮮資源豐富，菜色多以海鮮為主。粵菜的影響力遍及港澳地區及海外華人社區，尤其在東南亞、北美及歐洲等地廣泛流傳。
+  </p>
+  <div class="map">
+  </div>
+</div>
+
+<div class="section" id="dishes">
+  <h2>🍛 代表菜色介紹</h2>
+
+  <div class="dish">
+    <img src="粵1.avif" alt="白切雞" />
+    <div class="dish-content">
+      <h3>白切雞</h3>
+      <p>
+        白切雞是粵菜中的經典名菜，以新鮮雞肉用鹽水簡單煮熟，保留雞肉鮮嫩多汁。配以薑蔥醬汁，味道清爽鮮美，肉質細嫩滑順，強調原汁原味，是粵菜清淡風味的代表。
+      </p>
+    </div>
+  </div>
+
+  <div class="dish">
+    <img src="粵2.jpg" alt="乾炒牛河" />
+    <div class="dish-content">
+      <h3>乾炒牛河</h3>
+      <p>
+        乾炒牛河以河粉和嫩滑牛肉快炒，火候掌握得當，表面帶有香氣十足的「鑊氣」，口感滑嫩彈牙。此菜是粵菜中非常受歡迎的家常快炒菜，具有鮮明的地域特色。
+      </p>
+    </div>
+  </div>
+
+  <div class="dish">
+    <img src="粵3.jpg" alt="蠔油芥蘭" />
+    <div class="dish-content">
+      <h3>蠔油芥蘭</h3>
+      <p>
+        蠔油芥蘭用新鮮芥蘭快炒後淋上鮮美的蠔油，保持芥蘭的鮮脆口感與自然清甜，味道鮮美清爽，是粵菜中不可或缺的蔬菜佳餚。
+      </p>
+    </div>
+  </div>
+
+  <div class="dish">
+    <img src="粵4.webp" alt="燒鵝" />
+    <div class="dish-content">
+      <h3>燒鵝</h3>
+      <p>
+        燒鵝是粵菜中的燒味代表，選用肥瘦均勻的鵝肉，經過獨特醃製與燒烤工藝，外皮脆香，肉質鮮嫩多汁，味道層次豐富，深受食客喜愛。
+      </p>
+    </div>
+  </div>
+
+</div>

@@ -1,12 +1,313 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-  <meta charset="UTF-8">
-  <title>浙菜介紹</title>
+  <meta charset="UTF-8" />
+  <title>浙菜｜中國八大菜系</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Noto Serif TC", serif;
+      background-color: #121212;
+      color: #B0E0E6;
+      line-height: 1.8;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    header {
+      background-image: url('https://images.unsplash.com/photo-1604908554161-e4e7691802b3?auto=format&fit=crop&w=1470&q=80');
+      background-size: cover;
+      background-position: center;
+      color: #FFD700;
+      text-align: center;
+      padding: 100px 20px 80px;
+      position: relative;
+    }
+
+    header::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(18, 18, 18, 0.75);
+      z-index: 0;
+    }
+
+    header h1 {
+      font-size: 56px;
+      font-weight: 700;
+      position: relative;
+      z-index: 1;
+      margin: 0 0 16px;
+      letter-spacing: 3px;
+      color: #FFD700;
+      font-family: "Playfair Display", "Noto Serif TC", serif;
+    }
+
+    header p {
+      font-size: 20px;
+      position: relative;
+      z-index: 1;
+      max-width: 600px;
+      margin: 0 auto;
+      color: #B0E0E6;
+    }
+
+    .nav {
+      background-color: #1f1f1f;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 10px 0;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.6);
+    }
+
+    .nav ul {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav a {
+      text-decoration: none;
+      color: #FFD700;
+      font-weight: bold;
+      font-size: 18px;
+      transition: color 0.3s ease;
+    }
+
+    .nav a:hover {
+      color: #FFFACD;
+    }
+
+    .section {
+      max-width: 900px;
+      margin: 60px auto;
+      padding: 0 20px;
+    }
+
+    .section h2 {
+      color: #FFD700;
+      border-left: 6px solid #FFD700;
+      padding-left: 12px;
+      margin-bottom: 32px;
+      font-weight: 700;
+      font-size: 28px;
+      letter-spacing: 1.5px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: "Playfair Display", "Noto Serif TC", serif;
+    }
+
+    .section p {
+      font-size: 18px;
+      color: #B0E0E6;
+      max-width: 760px;
+      margin-bottom: 40px;
+    }
+
+    .map {
+      text-align: center;
+      margin-top: 30px;
+      margin-bottom: 50px;
+    }
+
+    .map img {
+      max-width: 100%;
+      border-radius: 16px;
+      transition: transform 0.3s ease;
+      cursor: zoom-in;
+      filter: brightness(0.85);
+    }
+
+    .map img:hover {
+      transform: scale(1.05);
+      filter: brightness(1);
+    }
+
+    .dish {
+      display: flex;
+      flex-wrap: wrap;
+      background: #1a1a1a;
+      border-radius: 20px;
+      overflow: hidden;
+      margin-bottom: 60px;
+      transition: transform 0.35s ease;
+      cursor: pointer;
+    }
+
+    .dish:hover {
+      transform: translateY(-6px);
+    }
+
+    .dish img {
+      width: 380px;
+      height: auto;
+      object-fit: cover;
+      flex-shrink: 0;
+      border-right: 8px solid #121212;
+      transition: filter 0.3s ease;
+      filter: brightness(0.9);
+    }
+
+    .dish:hover img {
+      filter: brightness(1);
+    }
+
+    .dish-content {
+      padding: 28px 36px;
+      flex: 1 1 400px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .dish-content h3 {
+      margin-top: 0;
+      color: #FFD700;
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 16px;
+      letter-spacing: 1.2px;
+      font-family: "Playfair Display", "Noto Serif TC", serif;
+    }
+
+    .dish-content p {
+      margin-bottom: 0;
+      font-size: 17px;
+      color: #B0E0E6;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 800px) {
+      .dish {
+        flex-direction: column;
+      }
+
+      .dish img {
+        width: 100%;
+        border-right: none;
+        border-bottom: 8px solid #121212;
+      }
+
+      .dish-content {
+        padding: 24px 20px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 36px;
+      }
+
+      header p {
+        font-size: 16px;
+      }
+
+      .section h2 {
+        font-size: 24px;
+      }
+
+      .section p {
+        font-size: 16px;
+      }
+
+      .dish-content h3 {
+        font-size: 26px;
+      }
+
+      .dish-content p {
+        font-size: 15px;
+      }
+    }
+  </style>
 </head>
 <body>
+
+<header>
   <h1>浙菜（浙江菜）</h1>
-  <p>浙菜講究清鮮爽口，擅長海鮮與江南甜點。</p>
-  <a href="index.html">⬅ 回首頁</a>
+  <p>清爽淡雅、講究鮮味，注重色香味形。</p>
+</header>
+
+<nav class="nav">
+  <ul>
+    <li><a href="#intro">浙菜介紹</a></li>
+    <li><a href="#geo">地理分布</a></li>
+    <li><a href="#dishes">代表菜色</a></li>
+  </ul>
+</nav>
+
+<div class="section" id="intro">
+  <h2>🍲 浙菜介紹</h2>
+  <p>
+     浙菜以清鮮爽口著稱，擅長燉、蒸、炒等技法，口味多以清淡為主。下分杭州菜、寧波菜、紹興菜三大流派，各具特色，融合江南水鄉文化風格。
+  </p>
+</div>
+
+<div class="section" id="geo">
+  <h2>📍 浙菜地理分布</h2>
+  <p>
+   浙菜源自浙江省，主要分布於杭州、寧波、紹興等地，是江南飲食文化的重要代表之一。
+  </p>
+</div>
+
+<div class="section" id="dishes">
+  <h2>🍛 代表菜色介紹</h2>
+
+  <div class="dish">
+    <img src="浙1.webp" alt="西湖醋魚" />
+    <div class="dish-content">
+      <h3>西湖醋魚</h3>
+      <p>
+       西湖醋魚是杭州著名傳統名菜，選用草魚或鯇魚現殺現煮，魚肉滑嫩無腥。料理過程中不加油炸，保留魚的原鮮，最後淋上糖醋調製的芡汁，酸甜適口。據說此菜源自宋代，亦稱「宋嫂魚羹」，體現浙菜講究原味與清雅的特點。
+      </p>
+    </div>
+  </div>
+
+  <div class="dish">
+    <img src="浙2.avif" alt="龍井蝦仁" />
+    <div class="dish-content">
+      <h3>龍井蝦仁</h3>
+      <p>
+        這道菜選用新鮮河蝦仁，先用蛋清與澱粉上漿，再與西湖名茶「龍井」茶葉同炒，蝦仁色澤潔白，茶香撲鼻，口感鮮嫩。整道菜不僅味道清爽，還充滿文人氣息，是杭幫菜中「茶文化入菜」的代表。
+      </p>
+    </div>
+  </div>
+
+  <div class="dish">
+    <img src="浙3.jpg" alt="東坡肉" />
+    <div class="dish-content">
+      <h3>東坡肉</h3>
+      <p>
+        相傳此菜由北宋文豪蘇東坡在杭州任官時創製。選用五花肉，經過煸炒後加黃酒慢火燜煮數小時，肉色紅亮，肥而不膩。入口即化、香氣四溢，是浙菜中最具代表性與歷史故事性的菜色之一。
+  </p>
+      </p>
+    </div>
+  </div>
+
+  <div class="dish">
+    <img src="浙4.jpg" alt="叫化雞" />
+    <div class="dish-content">
+      <h3>叫化雞</h3>
+      <p>
+        傳說由乞丐發明，後傳入宮廷。全雞先用香料醃製，內塞食材，再以荷葉、泥巴包裹，文火慢烤數小時。打開時香氣撲鼻，肉質軟嫩，充滿草本與泥土芳香，是一道極具江南文化色彩的創意名菜。
+      </p>
+    </div>
+  </div>
+</div>
+
 </body>
 </html>
+

@@ -1,12 +1,310 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-  <meta charset="UTF-8">
-  <title>閩菜介紹</title>
+  <meta charset="UTF-8" />
+  <title>閩菜｜中國八大菜系</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Noto Serif TC", serif;
+      background-color: #121212;
+      color: #B0E0E6;
+      line-height: 1.8;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    header {
+      background-image: url('https://images.unsplash.com/photo-1604908554161-e4e7691802b3?auto=format&fit=crop&w=1470&q=80');
+      background-size: cover;
+      background-position: center;
+      color: #FFD700;
+      text-align: center;
+      padding: 100px 20px 80px;
+      position: relative;
+    }
+
+    header::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(18, 18, 18, 0.75);
+      z-index: 0;
+    }
+
+    header h1 {
+      font-size: 56px;
+      font-weight: 700;
+      position: relative;
+      z-index: 1;
+      margin: 0 0 16px;
+      letter-spacing: 3px;
+      color: #FFD700;
+      font-family: "Playfair Display", "Noto Serif TC", serif;
+    }
+
+    header p {
+      font-size: 20px;
+      position: relative;
+      z-index: 1;
+      max-width: 600px;
+      margin: 0 auto;
+      color: #B0E0E6;
+    }
+
+    .nav {
+      background-color: #1f1f1f;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 10px 0;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.6);
+    }
+
+    .nav ul {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav a {
+      text-decoration: none;
+      color: #FFD700;
+      font-weight: bold;
+      font-size: 18px;
+      transition: color 0.3s ease;
+    }
+
+    .nav a:hover {
+      color: #FFFACD;
+    }
+
+    .section {
+      max-width: 900px;
+      margin: 60px auto;
+      padding: 0 20px;
+    }
+
+    .section h2 {
+      color: #FFD700;
+      border-left: 6px solid #FFD700;
+      padding-left: 12px;
+      margin-bottom: 32px;
+      font-weight: 700;
+      font-size: 28px;
+      letter-spacing: 1.5px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: "Playfair Display", "Noto Serif TC", serif;
+    }
+
+    .section p {
+      font-size: 18px;
+      color: #B0E0E6;
+      max-width: 760px;
+      margin-bottom: 40px;
+    }
+
+    .map {
+      text-align: center;
+      margin-top: 30px;
+      margin-bottom: 50px;
+    }
+
+    .map img {
+      max-width: 100%;
+      border-radius: 16px;
+      transition: transform 0.3s ease;
+      cursor: zoom-in;
+      filter: brightness(0.85);
+    }
+
+    .map img:hover {
+      transform: scale(1.05);
+      filter: brightness(1);
+    }
+
+    .dish {
+      display: flex;
+      flex-wrap: wrap;
+      background: #1a1a1a;
+      border-radius: 20px;
+      overflow: hidden;
+      margin-bottom: 60px;
+      transition: transform 0.35s ease;
+      cursor: pointer;
+    }
+
+    .dish:hover {
+      transform: translateY(-6px);
+    }
+
+    .dish img {
+      width: 380px;
+      height: auto;
+      object-fit: cover;
+      flex-shrink: 0;
+      border-right: 8px solid #121212;
+      transition: filter 0.3s ease;
+      filter: brightness(0.9);
+    }
+
+    .dish:hover img {
+      filter: brightness(1);
+    }
+
+    .dish-content {
+      padding: 28px 36px;
+      flex: 1 1 400px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .dish-content h3 {
+      margin-top: 0;
+      color: #FFD700;
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 16px;
+      letter-spacing: 1.2px;
+      font-family: "Playfair Display", "Noto Serif TC", serif;
+    }
+
+    .dish-content p {
+      margin-bottom: 0;
+      font-size: 17px;
+      color: #B0E0E6;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 800px) {
+      .dish {
+        flex-direction: column;
+      }
+
+      .dish img {
+        width: 100%;
+        border-right: none;
+        border-bottom: 8px solid #121212;
+      }
+
+      .dish-content {
+        padding: 24px 20px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 36px;
+      }
+
+      header p {
+        font-size: 16px;
+      }
+
+      .section h2 {
+        font-size: 24px;
+      }
+
+      .section p {
+        font-size: 16px;
+      }
+
+      .dish-content h3 {
+        font-size: 26px;
+      }
+
+      .dish-content p {
+        font-size: 15px;
+      }
+    }
+  </style>
 </head>
 <body>
+
+<header>
   <h1>閩菜（福建菜）</h1>
-  <p>閩菜擅長製湯，口味偏甜酸，使用海鮮與本地香料。</p>
-  <a href="index.html">⬅ 回首頁</a>
-</body>
-</html>
+  <p>湯品與海味聞名，講究清鮮中帶甜的福建地方風味。</p>
+</header>
+
+<nav class="nav">
+  <ul>
+    <li><a href="#intro">閩菜介紹</a></li>
+    <li><a href="#geo">地理分布</a></li>
+    <li><a href="#dishes">代表菜色</a></li>
+  </ul>
+</nav>
+
+<div class="section" id="intro">
+  <h2>🍲 閩菜介紹</h2>
+  <p>
+    閩菜是中國八大菜系之一，以講究湯品和海味聞名，風味清鮮中帶甜，重視食材的鮮活與調味的層次感。閩菜善用紅糟、魚露、醋和砂糖，烹調技法多樣，包括燉、炒、蒸、炸等，擁有豐富的地方流派如福州菜、閩南菜和閩東菜，融合了山海特色與多元文化。
+  </p>
+</div>
+
+<div class="section" id="geo">
+  <h2>📍 閩菜地理分布</h2>
+  <p>
+    閩菜起源於福建省，涵蓋福州、廈門、泉州、漳州等地。福建地處東南沿海，靠近海洋，海鮮資源豐富，菜品多利用當地特有的食材與調味品，形成獨特的風味和烹飪特色。
+  </p>
+  <div class="map">
+  </div>
+</div>
+
+<div class="section" id="dishes">
+  <h2>🍛 代表菜色介紹</h2>
+
+  <div class="dish">
+    <img src="閩1.jpg" alt="佛跳牆" />
+    <div class="dish-content">
+      <h3>佛跳牆</h3>
+      <p>
+        佛跳牆是閩菜中最具盛名的湯品，採用多種珍貴食材如鮑魚、海參、花膠、鵝掌等，經長時間燉煮而成。湯頭濃郁鮮美，香氣撲鼻，據說香氣能讓佛陀都跳牆而來品嘗，寓意極佳。
+      </p>
+    </div>
+  </div>
+
+  <div class="dish">
+    <img src="閩2.jpg" alt="荔枝肉" />
+    <div class="dish-content">
+      <h3>荔枝肉</h3>
+      <p>
+        荔枝肉選用豬里脊肉，切成球狀炸至外酥內嫩，再裹上酸甜汁，外觀紅潤似荔枝果，酸甜口感與酥脆口感完美結合，是閩南著名的經典佳餚。
+      </p>
+    </div>
+  </div>
+
+  <div class="dish">
+    <img src="閩3.jpg" alt="醉排骨" />
+    <div class="dish-content">
+      <h3>醉排骨</h3>
+      <p>
+        醉排骨將排骨裹粉炸至金黃酥脆，拌入酸甜酒香醬汁，味道濃郁且酒香撲鼻，兼具酥香與柔嫩，是閩菜獨特的酒香風味代表。
+      </p>
+    </div>
+  </div>
+
+  <div class="dish">
+    <img src="閩4.avif" alt="沙茶麵" />
+    <div class="dish-content">
+      <h3>沙茶麵</h3>
+      <p>
+        沙茶麵使用閩南地區特有的沙茶醬製作湯底，搭配彈牙的麵條和豐富配料，口感香辣鮮美，是當地居民喜愛的特色小吃。
+      </p>
+    </div>
+  </div>
+</div>
